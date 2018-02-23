@@ -646,6 +646,14 @@ $(document).ready(function() {
   var animation_elements = $.find('.animation-element');
   var web_window = $(window);
 
+
+  //on or scroll, detect elements in view
+  $(window).on('scroll resize', function() {
+      check_if_in_view()
+    })
+    //trigger our scroll event on initial load
+  $(window).trigger('scroll');
+
   //check to see if any animation containers are currently in view
   function check_if_in_view() {
     //get current window information
@@ -672,12 +680,6 @@ $(document).ready(function() {
 
   }
 
-  //on or scroll, detect elements in view
-  $(window).on('scroll resize', function() {
-      check_if_in_view()
-    })
-    //trigger our scroll event on initial load
-  $(window).trigger('scroll');
 
 });
 
