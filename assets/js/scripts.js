@@ -638,22 +638,18 @@ if (typeof jQuery === "undefined") {
 // my plugins and configs
 
 var gallery = $('.block-first--gallery a').simpleLightbox();
-
 var gallerybase = $('.block-eight--item').simpleLightbox();
-$(document).ready(function() {
 
+$(document).ready(function() {
   //window and animation items
   var animation_elements = $.find('.animation-element');
   var web_window = $(window);
-
-
   //on or scroll, detect elements in view
   $(window).on('scroll resize', function() {
       check_if_in_view()
     })
     //trigger our scroll event on initial load
   $(window).trigger('scroll');
-
   //check to see if any animation containers are currently in view
   function check_if_in_view() {
     //get current window information
@@ -677,7 +673,6 @@ $(document).ready(function() {
         element.removeClass('in-view');
       }
     });
-
   }
 
 
@@ -715,3 +710,22 @@ $(function() {
     cycleImages()
   }, 6000);
 });
+
+
+var owl = $('.owl-carousel');
+owl.owlCarousel({
+  items: 1,
+  lazyLoad: true,
+  loop: true,
+  margin: 10,
+  autoplay: true,
+  autoHeight: true,
+  autoplayTimeout: 1000,
+  autoplayHoverPause: true
+});
+$('.play').on('click', function() {
+  owl.trigger('play.owl.autoplay', [1000])
+})
+$('.stop').on('click', function() {
+  owl.trigger('stop.owl.autoplay')
+})
